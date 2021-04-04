@@ -5,6 +5,21 @@ const assertEqual = function (actual, expected) {
     console.log(`🤬🤬🤬 Assertion Failed: ${actual} !== ${expected}`);
   }
 };
+const eqArrays = function (array1, array2) {
+  //if the arrays are of different length - this cannot be true
+  if (array1.length !== array2.length) {
+    return false;
+  }
+  //Loop through the arrays' length
+  for (let i = 0; i < array1.length; i++) {
+    //If an indexed value is not the same in the other array - this cannot be true
+    if (array1[i] !== array2[i]) {
+      return false;
+    }
+  }
+  //if all other tests fail - the arrays must be equal
+  return true;
+};
 
 const eqObjects = function (object1, object2) {
   // set keys of object1 to array
@@ -27,31 +42,19 @@ const eqObjects = function (object1, object2) {
   }
   return true;
 };
-const eqArrays = function (array1, array2) {
-  //if the arrays are of different length - this cannot be true
-  if (array1.length !== array2.length) {
-    return false;
+
+const assertObjectsEqual = function (actual, expected) {
+  const inspect = require('util').inspect;
+  console.log(`Example label: ${inspect(actual)}`);
+
+  if (eqObjects(actual, expected)) {
+    console.log(`🍀🍀🍀 Assertion Passed: ${inspect(actual)} === ${inspect(expected)}`);
+  } else {
+    console.log(`🤬🤬🤬 Assertion Failed: ${inspect(actual)} !== ${inspect(expected)}`);
   }
-  //Loop through the arrays' length
-  for (let i = 0; i < array1.length; i++) {
-    //If an indexed value is not the same in the other array - this cannot be true
-    if (array1[i] !== array2[i]) {
-      return false;
-    }
-  }
-  //if all other tests fail - the arrays must be equal
-  return true;
+  
 };
 
-const assertObjectsEqual = function (actual, expected) {};
-
-const ab = { a: '1', b: '2' };
-const ba = { b: '2', a: '1' };
-console.log(assertEqual(eqObjects(ab, ba), true));
-const abc = { a: '1', b: '2', c: '3' };
-console.log(assertEqual(eqObjects(ab, abc), false));
 const cd = { c: '1', d: ['2', 3] };
 const dc = { d: ['2', 3], c: '1' };
-console.log(assertEqual(eqObjects(cd, dc), true));
-const cd2 = { c: '1', d: ['2', 3, 4] };
-console.log(assertEqual(eqObjects(cd, cd2), false));
+assertObjectsEqual(cd, dc);
