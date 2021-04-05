@@ -1,5 +1,5 @@
 
-//Crreate a function that passes 2 args
+//Create a function that passes 2 args
 const eqArrays = function(array1, array2) {
   //if the arrays are of different length - this cannot be true
   if (array1.length !== array2.length) {
