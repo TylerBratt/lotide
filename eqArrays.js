@@ -1,13 +1,6 @@
-/* eslint-disable space-before-function-paren */
-const assertEqual = function (actual, expected) {
-  if (actual === expected) {
-    console.log(`🍀🍀🍀 Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`🤬🤬🤬 Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
+
 //Crreate a function that passes 2 args
-const eqArrays = function (array1, array2) {
+const eqArrays = function(array1, array2) {
   //if the arrays are of different length - this cannot be true
   if (array1.length !== array2.length) {
     return false;
@@ -22,8 +15,4 @@ const eqArrays = function (array1, array2) {
   //if all other tests fail - the arrays must be equal
   return true;
 };
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => true
-assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), true); // => false
-
-assertEqual(eqArrays(['1', '2', '3'], ['1', '2', '3']), true); // => true
-assertEqual(eqArrays(['1', '2', '3'], ['1', '2', 3]), true); // => false
+module.exports = eqArrays;
