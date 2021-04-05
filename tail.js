@@ -1,9 +1,4 @@
-const tail = function(word) {
-  let newArray = [];
-  for (let i = 1; i < word.length; i++) {
-    newArray.push(word[i]);
-  }
-  return newArray;
+const tail = function(array) {
+  return array[array.length - 1];
 };
-
 module.exports = tail;
